@@ -62,22 +62,17 @@ const processRawEvent = rawEvent => {
 
 /**
  * @param {Request} req
- * @returns {Promise<void>}
- */
-const processRequest = req => new Promise(resolve =>
-  readableStreamToJSON(req.body)
-    .then(json => (resolve(), processRawEvent(json)))
-    .catch(() => resolve())
-)
-
-/**
- * @param {Request} req
  * @param {URL} url
  */
-const route = (req, url) => {
+const route = req => {
+  const url = new URL(req.url)
+
   if (url.pathname === '/process') {
     if (req.body !== null) {
-      return processRequest(req).then(() => new Response())
+      return req.json()
+        .then(processRawEvent)
+        .then(() => new Response())
+        .catch(() => new Response())
     } else {
       return new Response()
     }
@@ -110,10 +105,10 @@ const route = (req, url) => {
       }
     )
   } else if (url.pathname === '/details') {
-    const backId = url.searchParams.get('backid')
-    const project = url.searchParams.get('project')
-    const subrepo = url.searchParams.get('subrepo')
-    const tag = url.searchParams.get('tag')
+    const backId = url.searchParams.get('backid') ?? ''
+    const project = url.searchParams.get('project') ?? ''
+    const subrepo = url.searchParams.get('subrepo') ?? ''
+    const tag = url.searchParams.get('tag') ?? ''
 
     return harborVulnFetch(project, subrepo, tag)
       .then(sortVulnerabilities)
@@ -133,5 +128,5 @@ process.on('SIGABRT', () => process.exit())
 
 serve({
   port: process.PORT || '8123',
-  fetch: req => route(req, new URL(req.url))
+  fetch: req => route(req)
 })

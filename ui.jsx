@@ -10,7 +10,13 @@ export const renderResourcesPage = () => renderToReadableStream(
   </Index>
 )
 
-/** @param {Array<Vulnerability>} vulnerabilities */
+/**
+ * @param {string} backId
+ * @param {string} project
+ * @param {string} subrepo
+ * @param {string} tag
+ * @param {Array<Vulnerability>} vulnerabilities
+ */
 export const renderVulnerabilitiesPage = (backId, project, subrepo, tag, vulnerabilities) =>
   renderToReadableStream(
     <Index subtitle={`Уязвимости ${project}/${subrepo}:${tag}`}>
