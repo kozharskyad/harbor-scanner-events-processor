@@ -1,0 +1,14 @@
+{
+  "name": "harbor-scanner-events-processor",
+  "module": "index.js",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "type": "module",
+  "dependencies": {
+    "react-dom": "18.3.1"
+  }
+}

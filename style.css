@@ -1,0 +1,81 @@
+body {
+  font-family: 'RobotoRegular';
+  font-size: 10pt;
+}
+
+hr {
+  border: 1px solid #ccc;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+tr:target {
+  background-color: #ddd;
+}
+
+tr:hover {
+  background-color: #eee;
+}
+
+td {
+  border: 1px solid #aaa;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+td.details {
+  border: 0px;
+  padding: 0px;
+  padding-right: 10px;
+  white-space: nowrap;
+  vertical-align: text-top;
+}
+
+th {
+  font-family: 'RobotoBold';
+  font-weight: bold;
+  border: 1px solid #aaa;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+label {
+  font-family: 'RobotoBold';
+  font-weight: bold;
+}
+
+a {
+  color: #00a;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #00a;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #a00;
+  text-decoration: none;
+}
+
+a:active {
+  color: #a00;
+  text-decoration: underline;
+}
+
+.critical {
+  background-color: #faa;
+}
+
+.high {
+  background-color: #ffa;
+}
+
+.medium {
+  background-color: #afa;
+}
